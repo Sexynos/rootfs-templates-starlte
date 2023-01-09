@@ -50,6 +50,9 @@ curl -sS https://mirror.bardia.tech/exynos9810/exynos9810.gpg | tee /etc/apt/tru
 curl https://mirror.bardia.tech/exynos9810/exynos9810.gpg | sudo apt-key add -
 curl -sS -o /etc/apt/sources.list.d/exynos9810.list https://mirror.bardia.tech/exynos9810/exynos9810.list
 apt update
+DEBIAN_FRONTEND=noninteractive apt install -y adaptation-droidian-exynos9810 adaptation-exynos9810-configs
+systemctl disable systemd-resolved systemd-timesyncd upower bluetooth
+systemctl mask systemd-resolved systemd-timesyncd upower bluetooth
 
 tmpdir="$(mktemp -d)"
 trap cleanup EXIT
